@@ -23,7 +23,7 @@ void TickInit(void)
 /* ===== 定时器更新回调：每 1 ms 自动被调用一次 ===== */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-    if (htim->Instance == TIM2)      /* 判一下是谁触发的，更规范 */
+    if (htim->Instance == TIM2)      /* 必须判断：该回调由所有定时器共用，后续工程会同时开启多个定时器 */
     {
         tick++;                      /* 作业要求：tick 自增 1 */
         
